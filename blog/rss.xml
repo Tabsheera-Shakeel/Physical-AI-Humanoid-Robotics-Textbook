@@ -4,10 +4,36 @@
         <title>Physical AI and Humanoid Robotics Blog</title>
         <link>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog</link>
         <description>Physical AI and Humanoid Robotics Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Dec 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Book and Developer Information]]></title>
+            <link>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info</link>
+            <guid>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info</guid>
+            <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[About the Book: Physical AI and Humanoid Robotics]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="about-the-book-physical-ai-and-humanoid-robotics">About the Book: Physical AI and Humanoid Robotics<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#about-the-book-physical-ai-and-humanoid-robotics" class="hash-link" aria-label="Direct link to About the Book: Physical AI and Humanoid Robotics" title="Direct link to About the Book: Physical AI and Humanoid Robotics" translate="no">​</a></h2>
+<p>This textbook serves as a comprehensive guide to the fascinating and rapidly evolving fields of Physical AI and Humanoid Robotics. Designed for students, researchers, and enthusiasts, it delves into the core concepts, practical applications, and future potential of intelligent robots that interact with the physical world.</p>
+<p>Key topics covered include:</p>
+<ul>
+<li class="">ROS2 for robotic control and communication</li>
+<li class="">Digital Twin concepts and simulation with Gazebo and Unity</li>
+<li class="">AI for robot brains, leveraging Isaac SDK</li>
+<li class="">Visual Language Models (VLAs) for advanced robot perception and action generation</li>
+</ul>
+<p>Our goal is to provide a solid foundation and inspire further exploration into creating the next generation of intelligent, autonomous, and physically capable robots.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="code-examples-and-hands-on-learning">Code Examples and Hands-on Learning<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#code-examples-and-hands-on-learning" class="hash-link" aria-label="Direct link to Code Examples and Hands-on Learning" title="Direct link to Code Examples and Hands-on Learning" translate="no">​</a></h2>
+<p>To support your hands-on learning and practical application of the concepts discussed in this book, we provide a dedicated GitHub repository with code examples. This repository is an invaluable resource for experimenting with ROS2, digital twin simulations, AI for robot brains, and Visual Language Models.</p>
+<p>You can access the code examples here: <a href="https://github.com/Tabsheera-Shakeel/Physical-AI-Humanoid-Robotics-Code-Examples.git" target="_blank" rel="noopener noreferrer" class="">Physical AI Humanoid Robotics Code Examples</a></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="about-the-developer">About the Developer<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#about-the-developer" class="hash-link" aria-label="Direct link to About the Developer" title="Direct link to About the Developer" translate="no">​</a></h2>
+<p>This project is spearheaded by Tabsheera Shakeel. You can find more detailed information about the developer, including professional background and contact details, on the dedicated <a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/developer">Developer page</a>.</p>
+<p>Stay tuned for more updates, new content, and exciting developments in the world of Physical AI and Humanoid Robotics!</p>]]></content:encoded>
+            <category>Update</category>
+            <category>Book</category>
+            <category>Developer</category>
+        </item>
         <item>
             <title><![CDATA[Welcome]]></title>
             <link>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/welcome</link>
