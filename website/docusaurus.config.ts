@@ -7,9 +7,9 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Production URL
-  url: 'https://rahaima-shakeel.github.io',
+  url: 'https://physical-ai-and-humanoid-robotics-t-tau.vercel.app/',
   // Base path for GitHub Pages (repository name)
-  baseUrl: '/Physical-AI-and-Humanoid-Robotics-textbook/',
+  baseUrl: '/',
 
   // GitHub pages deployment config
   organizationName: 'rahaima-shakeel',
