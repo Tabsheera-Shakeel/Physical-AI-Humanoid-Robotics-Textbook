@@ -1,0 +1,108 @@
+---
+sidebar_position: 3
+sidebar_label: Troubleshooting Guide
+title: Troubleshooting Guide for Physical AI Humanoids
+---
+
+# Troubleshooting Guide for Physical AI Humanoids
+
+Developing Physical AI humanoids involves complex interactions between hardware, software, and AI algorithms. This guide provides common troubleshooting steps and solutions for issues you might encounter when working with ROS 2, simulation environments, and NVIDIA Isaac.
+
+## I. General ROS 2 Troubleshooting
+
+### Problem: ROS 2 commands not found (`ros2: command not found`)
+
+*   **Cause:** ROS 2 environment script has not been sourced in the current terminal session.
+*   **Solution:** `source /opt/ros/{ROS2_DISTRO}/setup.bash` (e.g., `iron`, `humble`). If you have a workspace, also `source ~/ros2_ws/install/setup.bash`. To make it permanent, add these lines to your `~/.bashrc`.
+
+### Problem: Nodes not communicating (e.g., `ros2 topic echo` shows no data)
+
+*   **Cause 1:** Nodes are not running, or one of them crashed.
+*   **Solution 1:** Check `ros2 node list` to see if all expected nodes are active. Check terminal output for errors or use `ros2 log` to view recent logs.
+*   **Cause 2:** Topic names or message types don't match.
+*   **Solution 2:** Use `ros2 topic list -t` to verify topic names and types. Use `ros2 topic info <topic_name>` for more details.
+*   **Cause 3:** Different DDS implementations (RMW) are not compatible or correctly configured.
+*   **Solution 3:** Ensure all ROS 2 instances are using the same RMW implementation (e.g., Fast RTPS, Cyclone DDS). Check `RMW_IMPLEMENTATION` environment variable.
+
+### Problem: `colcon build` fails
+
+*   **Cause 1:** Missing dependencies.
+*   **Solution 1:** Run `rosdep install --from-paths src --ignore-src -r -y` from your workspace root (`~/ros2_ws`) to install all missing dependencies.
+*   **Cause 2:** Compilation errors in your code.
+*   **Solution 2:** Carefully read the error messages in the `colcon build` output. Look for compiler errors (C++) or syntax errors (Python). Build specific packages with `--packages-select <pkg_name>` to narrow down the issue.
+*   **Cause 3:** Incorrect `CMakeLists.txt` or `setup.py` configurations.
+*   **Solution 3:** Double-check your build system files against working examples (e.g., `ros2_tutorials`).
+
+## II. Simulation Environment Troubleshooting (Isaac Sim / Gazebo)
+
+### Problem: Robot model not spawning or appearing correctly in the simulator
+
+*   **Cause 1:** Incorrect URDF/Xacro path or invalid model.
+*   **Solution 1:** Verify the path to your robot's URDF/Xacro file in your launch file. Open the URDF in a viewer (e.g., `urdf_to_graphiz`, `rviz2`) to check for parsing errors. Use `check_urdf` tool.
+*   **Cause 2:** Missing meshes or incorrect mesh paths.
+*   **Solution 2:** Ensure all mesh files (`.stl`, `.dae`) are present and the paths specified in the URDF are correct relative to the package or absolute.
+*   **Cause 3:** Gazebo/Isaac Sim plugins not loading.
+*   **Solution 3:** Check the simulator's terminal output for errors related to plugin loading. Ensure plugin filenames are correct and the shared libraries (`.so`) are in the correct path (often `install/<pkg_name>/lib/`).
+
+### Problem: Simulated robot physics are unstable or behave unexpectedly
+
+*   **Cause 1:** Incorrect inertial properties in URDF.
+*   **Solution 1:** Double-check mass, center of mass, and inertia tensor values for each link in your URDF. Incorrect values can lead to unstable physics.
+*   **Cause 2:** Collisions between robot links at startup.
+*   **Solution 2:** Start the robot in a valid, non-colliding pose. Adjust joint limits or initial positions.
+*   **Cause 3:** Physics engine parameters need tuning.
+*   **Solution 3:** Adjust global physics parameters in the simulator (e.g., gravity, iteration count, real-time factor).
+
+### Problem: Sensor data is not being published from the simulator to ROS 2
+
+*   **Cause 1:** ROS 2 bridge not active or misconfigured.
+*   **Solution 1:** In Isaac Sim, ensure the ROS 2 Bridge extension is enabled. For Gazebo, verify the `libgazebo_ros_init.so` and specific sensor plugins (`libgazebo_ros_camera.so`, etc.) are loaded and correctly configured in your URDF/SDF.
+*   **Cause 2:** Incorrect topic names or message types being published by the simulator plugins.
+*   **Solution 2:** Use `ros2 topic list -t` and `ros2 topic info <topic_name>` to verify that the simulator is publishing data on the expected topics with the correct message types.
+
+## III. NVIDIA Isaac Specific Troubleshooting
+
+### Problem: Isaac Sim fails to launch or crashes
+
+*   **Cause 1:** NVIDIA drivers are not up-to-date or correctly installed.
+*   **Solution 1:** Ensure you have the latest stable NVIDIA drivers installed for your GPU.
+*   **Cause 2:** Docker or NVIDIA Container Toolkit issues.
+*   **Solution 2:** Verify Docker is running and `nvidia-smi` works within a Docker container. Restart Docker service if needed (`sudo systemctl restart docker`).
+*   **Cause 3:** Insufficient GPU memory.
+*   **Solution 3:** Close other GPU-intensive applications. Reduce scene complexity in Isaac Sim.
+
+### Problem: Isaac SDK GEMs not performing as expected
+
+*   **Cause 1:** Incorrect parameters in the `.app` file or component configuration.
+*   **Solution 1:** Carefully review the documentation for the specific GEM and ensure all parameters are set correctly.
+*   **Cause 2:** Input data (messages) are not in the expected format or not arriving.
+*   **Solution 2:** Use Isaac's debugging tools (e.g., Inspector) or ROS 2 tools (`ros2 topic echo`) to examine the messages flowing into the GEM.
+
+### Problem: Poor performance of AI models on Jetson
+
+*   **Cause 1:** Model is not optimized for TensorRT.
+*   **Solution 1:** Ensure your deep learning model is converted and optimized using TensorRT. Deploy a TensorRT-optimized engine.
+*   **Cause 2:** Insufficient hardware resources.
+*   **Solution 2:** Monitor CPU, GPU, and memory usage using tools like `tegrastats` on Jetson. Consider reducing model complexity or increasing batch size for inference.
+
+## IV. VLA Specific Troubleshooting
+
+### Problem: Natural Language Understanding (NLU) misinterprets commands
+
+*   **Cause 1:** Training data bias or limited vocabulary.
+*   **Solution 1:** Expand the training dataset for your NLU model with more diverse examples, especially specific to your robot's domain. Fine-tune pre-trained LLMs with domain-specific interactions.
+*   **Cause 2:** Ambiguity in human commands.
+*   **Solution 2:** Implement clarification dialogues. Design your NLU to handle common ambiguities or ask for confirmation from the user.
+*   **Cause 3:** Language grounding issues.
+*   **Solution 3:** Ensure your NLU output is correctly mapped to entities identified by the perception system (e.g., the "red mug" identified by vision is indeed the "red mug" in the NLU output).
+
+### Problem: Robot fails to execute planned actions or moves unstably
+
+*   **Cause 1:** Inaccurate pose estimation or map.
+*   **Solution 1:** Debug your SLAM, localization, and object detection modules. Verify ground truth vs. estimated poses in the simulator.
+*   **Cause 2:** Motion planning errors (collisions, unreachable poses).
+*   **Solution 2:** Use `rviz2` or Isaac Sim's debugging tools to visualize planned paths and detect collisions. Check joint limits and kinematic feasibility within MoveIt 2.
+*   **Cause 3:** Whole-body control instability.
+*   **Solution 3:** Tune gains for your whole-body controller. Ensure the robot's center of mass remains within its support polygon during bipedal movements.
+
+This troubleshooting guide provides a starting point. The key to successful debugging is a systematic approach, isolating problems, and leveraging the rich set of tools available in the ROS 2, simulation, and NVIDIA Isaac ecosystems.

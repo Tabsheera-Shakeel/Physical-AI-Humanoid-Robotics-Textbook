@@ -1,0 +1,110 @@
+---
+sidebar_position: 1
+sidebar_label: ROS 2 Cheatsheet
+title: ROS 2 Cheatsheet
+---
+
+# ROS 2 Cheatsheet
+
+This cheatsheet provides a quick reference for common ROS 2 commands, concepts, and best practices. It's designed to be a handy tool for developers working with ROS 2, especially when debugging or quickly setting up a new environment.
+
+## General Commands
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `source /opt/ros/{DISTRO}/setup.bash` | Source the ROS 2 environment (e.g., `iron`, `humble`).                  |
+| `source ~/ros2_ws/install/setup.bash` | Source your workspace overlay.                                            |
+| `ros2 help`                 | Display general help message.                                             |
+| `ros2 <command> help`       | Display help for a specific ROS 2 command (e.g., `ros2 topic help`).      |
+
+## Package Management
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 pkg create --build-type ament_python <pkg_name>` | Create a new Python package.                                              |
+| `ros2 pkg create --build-type ament_cmake <pkg_name>`  | Create a new C++ package.                                                 |
+| `ros2 pkg create --dependencies rclpy ...`             | Add dependencies when creating a package.                                 |
+| `ros2 pkg list`             | List all available ROS 2 packages.                                        |
+| `ros2 pkg prefix <pkg_name>` | Get the install prefix of a package.                                      |
+| `ros2 pkg xml <pkg_name>`   | Print the content of `package.xml`.                                       |
+
+## Workspace Commands (`colcon`)
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `colcon build`              | Build all packages in the workspace.                                      |
+| `colcon build --packages-select <pkg1> <pkg2>` | Build selected packages.                                                  |
+| `colcon build --packages-up-to <pkg_name>`     | Build a package and its dependencies.                                     |
+| `colcon build --symlink-install`               | Install files as symlinks (useful for Python, `package.xml` changes).     |
+| `colcon test`               | Run tests for all packages.                                               |
+| `colcon test --packages-select <pkg_name>`     | Run tests for a specific package.                                         |
+| `colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release` | Pass CMake arguments for Release build.                                   |
+
+## Node Management
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 run <pkg_name> <executable_name>` | Run an executable from a package.                                         |
+| `ros2 node list`            | List all active nodes.                                                    |
+| `ros2 node info /<node_name>` | Display information about a specific node.                                |
+
+## Topic Communication
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 topic list`           | List all active topics.                                                   |
+| `ros2 topic list -t`        | List all active topics with their types.                                  |
+| `ros2 topic info /<topic_name>` | Display information about a specific topic.                               |
+| `ros2 topic echo /<topic_name>` | Display messages published on a topic.                                    |
+| `ros2 topic hz /<topic_name>` | Report the publishing rate of a topic.                                    |
+| `ros2 topic pub /<topic_name> <msg_type> <args>` | Publish data to a topic. (Requires JSON-like arguments).                 |
+| `ros2 interface show <msg_type>` | Show the definition of a message type.                                    |
+
+## Service Communication
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 service list`         | List all active services.                                                 |
+| `ros2 service list -t`      | List all active services with their types.                                |
+| `ros2 service info /<service_name>` | Display information about a specific service.                             |
+| `ros2 service call /<service_name> <srv_type> <args>` | Call a service. (Requires JSON-like arguments).                           |
+| `ros2 interface show <srv_type>` | Show the definition of a service type.                                    |
+
+## Action Communication
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 action list`          | List all active actions.                                                  |
+| `ros2 action list -t`       | List all active actions with their types.                                 |
+| `ros2 action info /<action_name>` | Display information about a specific action.                              |
+| `ros2 action send_goal /<action_name> <action_type> <args>` | Send a goal to an action server. (Requires JSON-like arguments).         |
+| `ros2 interface show <action_type>` | Show the definition of an action type.                                    |
+
+## Parameter Management
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 param list`           | List all parameters on active nodes.                                      |
+| `ros2 param get /<node_name> <param_name>` | Get the value of a parameter.                                             |
+| `ros2 param set /<node_name> <param_name> <value>` | Set the value of a parameter.                                             |
+| `ros2 param dump /<node_name>` | Dump all parameters of a node to a YAML file.                             |
+| `ros2 param load /<node_name> <file.yaml>` | Load parameters from a YAML file to a node.                               |
+
+## Launch Files
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `ros2 launch <pkg_name> <launch_file.launch.py>` | Run a launch file.                                                        |
+| `ros2 launch <pkg_name> <launch_file.launch.py> --show-args` | Show arguments accepted by the launch file.                               |
+
+## Debugging and Visualization
+
+| Command                     | Description                                                               |
+| :-------------------------- | :------------------------------------------------------------------------ |
+| `rviz2`                     | ROS 2 visualization tool.                                                 |
+| `rqt_graph`                 | Visualize the ROS 2 computation graph.                                    |
+| `ros2 doctor`               | Check for common ROS 2 problems.                                          |
+| `ros2 bag record -a`        | Record all topics to a bag file.                                          |
+| `ros2 bag play <bag_file>`  | Play back a bag file.                                                     |
+
+This cheatsheet is not exhaustive but covers the most frequently used commands and concepts in ROS 2. For more detailed information, always refer to the [official ROS 2 Documentation](https://docs.ros.org/).

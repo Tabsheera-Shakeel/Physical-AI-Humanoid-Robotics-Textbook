@@ -1,0 +1,97 @@
+---
+sidebar_position: 2
+sidebar_label: Setting Up Isaac
+title: Setting Up NVIDIA Isaac Development Environment
+---
+
+# Setting Up NVIDIA Isaac Development Environment
+
+To harness the power of the NVIDIA Isaac ecosystem for your humanoid AI projects, setting up the development environment correctly is crucial. This typically involves installing NVIDIA drivers, Docker, the Isaac Sim simulator, and potentially the Isaac SDK for specific modules. This guide provides a high-level overview of the setup process.
+
+## Prerequisites
+
+Before you begin, ensure your system meets the following requirements:
+
+1.  **NVIDIA GPU:** A powerful NVIDIA GPU (RTX series or higher is recommended) is essential for running Isaac Sim and leveraging GPU-accelerated AI.
+2.  **Ubuntu Linux:** NVIDIA Isaac primarily targets Ubuntu Linux (20.04 LTS or 22.04 LTS are common).
+3.  **NVIDIA Drivers:** Install the latest proprietary NVIDIA drivers for your GPU.
+    ```bash
+    sudo apt update
+    sudo apt install nvidia-driver-535 # or the latest recommended driver version
+    ```
+4.  **Docker & NVIDIA Container Toolkit:** Isaac Sim and many Isaac SDK components run within Docker containers to ensure consistent environments and easy deployment.
+    *   Install Docker Engine: Follow the official Docker documentation for your Ubuntu version.
+    *   Install NVIDIA Container Toolkit:
+        ```bash
+        distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+        && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+        && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+            sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+            sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+        sudo apt update
+        sudo apt install -y nvidia-container-toolkit
+        sudo nvidia-ctk runtime configure --runtime=docker
+        sudo systemctl restart docker
+        ```
+    *   Verify Docker and `nvidia-smi` access:
+        ```bash
+        docker run --rm --gpus all ubuntu nvidia-smi
+        ```
+        You should see your GPU information.
+
+## 1. Setting Up NVIDIA Omniverse Launcher
+
+NVIDIA Omniverse is the platform on which Isaac Sim runs.
+
+1.  **Download and Install Omniverse Launcher:**
+    *   Go to the [NVIDIA Omniverse website](https://www.nvidia.com/omniverse/).
+    *   Download and install the Omniverse Launcher for Linux.
+2.  **Install Cache and Nucleus:**
+    *   From the Launcher, install "Cache" and "Nucleus Local" (if you want local asset management).
+3.  **Install Isaac Sim:**
+    *   Within the Omniverse Launcher, navigate to the "Exchange" tab.
+    *   Search for "Isaac Sim" and install the latest version. This will download the necessary Docker image.
+
+## 2. Launching Isaac Sim
+
+Isaac Sim can be launched directly from the Omniverse Launcher. When you launch it for the first time, it might download additional assets.
+
+## 3. Setting Up Isaac SDK (Optional, for specific use cases)
+
+The Isaac SDK provides lower-level access to algorithms and development tools. You might use it if you need to integrate specific Isaac GEMs directly into your ROS 2 nodes or develop custom AI components beyond what Isaac Sim offers.
+
+1.  **Download Isaac SDK:**
+    *   Go to the [NVIDIA Developer website](https://developer.nvidia.com/isaac-sdk).
+    *   Download the appropriate version of the Isaac SDK.
+2.  **Extract and Configure:**
+    *   Extract the downloaded archive.
+    *   Follow the SDK's documentation for setting up the environment, building examples, and integrating with ROS 2. This usually involves sourcing setup scripts and compiling workspaces.
+
+## 4. Integrating with ROS 2
+
+Isaac Sim provides a built-in ROS 2 Bridge for seamless communication.
+
+1.  **Enable ROS 2 Bridge in Isaac Sim:**
+    *   Within Isaac Sim, you can typically enable the ROS 2 Bridge extension.
+    *   This will expose simulated sensor data as ROS 2 topics and allow you to send control commands via ROS 2 topics to the simulated robot.
+
+2.  **Example ROS 2 Communication:**
+    *   You can then use standard ROS 2 commands to interact:
+        ```bash
+        ros2 topic list
+        ros2 topic echo /joint_states
+        ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/robot_base_velocity
+        ```
+    *   The exact topics and services will depend on the robot model and the enabled extensions in Isaac Sim.
+
+## Development Workflow
+
+A common development workflow involves:
+
+1.  **Model Creation:** Develop your humanoid robot's URDF/Xacro and import it into Isaac Sim.
+2.  **Simulation & Synthetic Data:** Use Isaac Sim to simulate the robot, create environments, and generate synthetic data for training AI models.
+3.  **AI Training:** Train your AI models (e.g., for perception, navigation) using the generated synthetic data, potentially leveraging NVIDIA's ML frameworks.
+4.  **Deployment:** Deploy the trained AI models (e.g., as part of ROS 2 nodes) to the Jetson platform on your physical humanoid robot.
+5.  **Testing & Refinement:** Test the AI on the physical robot and use Isaac Sim for further refinement and debugging.
+
+Setting up the NVIDIA Isaac environment provides a powerful foundation for developing cutting-edge AI for humanoid robots. It bridges the gap between high-fidelity simulation and real-world deployment, accelerating your journey into Physical AI.

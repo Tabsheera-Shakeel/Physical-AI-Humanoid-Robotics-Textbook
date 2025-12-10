@@ -1,0 +1,56 @@
+---
+sidebar_position: 5
+sidebar_label: Future Work
+title: Capstone Project - Future Work and Extensions
+---
+
+# Capstone Project: Future Work and Extensions
+
+The Capstone Project, by its nature, is a starting point. While a successful project demonstrates the integration of various Physical AI components, there are always numerous avenues for future work and extensions to enhance capabilities, robustness, and realism. This section outlines potential directions for expanding upon your Capstone Project.
+
+## I. Enhancing Robustness and Generalization
+
+1.  **Improved Sim-to-Real Transfer:**
+    *   **Challenge:** Bridging the gap between simulation and real-world performance.
+    *   **Future Work:** Investigate domain randomization in Isaac Sim more thoroughly. Experiment with adaptive control techniques that can compensate for model inaccuracies or unmodeled real-world dynamics. Explore sim-to-real transfer learning strategies.
+2.  **Uncertainty Handling:**
+    *   **Challenge:** Dealing with noisy sensor data, imperfect models, and unexpected environmental changes.
+    *   **Future Work:** Integrate probabilistic filtering techniques (e.g., Extended Kalman Filters, Particle Filters) for state estimation. Implement robust planning algorithms that consider uncertainties in perception or actuation.
+3.  **Error Detection and Recovery:**
+    *   **Challenge:** Robots inevitably encounter unexpected situations or failures.
+    *   **Future Work:** Develop mechanisms for detecting when a task has failed (e.g., dropped an object, stuck) and implementing recovery behaviors (e.g., re-plan, ask for human help).
+
+## II. Expanding Capabilities
+
+1.  **Advanced Human-Robot Interaction (HRI):**
+    *   **Challenge:** Making interaction more natural, intuitive, and effective.
+    *   **Future Work:** Implement more sophisticated gesture recognition. Incorporate emotion detection to understand human affective states. Enable multi-turn dialogue and contextual understanding in NLU. Develop proactive communication strategies for the robot.
+2.  **Learning from Human Demonstration (LfD):**
+    *   **Challenge:** Reducing the need for manual programming by allowing robots to learn from observing humans.
+    *   **Future Work:** Implement LfD techniques where a human teleoperates the robot (potentially in Isaac Sim) to teach new skills, which the VLA model can then generalize.
+3.  **Complex Manipulation Skills:**
+    *   **Challenge:** Performing dexterous tasks, handling deformable objects, or operating in confined spaces.
+    *   **Future Work:** Explore advanced grasping techniques (e.g., using compliant hands, multi-finger grippers). Integrate force/torque control for delicate object handling. Develop manipulation strategies for ropes, fabrics, or liquids.
+4.  **Dynamic Locomotion:**
+    *   **Challenge:** Achieving more agile and human-like movement over varied terrains.
+    *   **Future Work:** Implement more advanced whole-body control algorithms for dynamic walking, running, or climbing. Integrate vision-based terrain analysis for adaptive gait generation.
+5.  **Multi-Robot Collaboration:**
+    *   **Challenge:** Coordinating multiple humanoid robots or humanoids with other robot types to achieve a common goal.
+    *   **Future Work:** Develop communication and coordination protocols for collaborative task execution. Address challenges in shared perception and distributed planning.
+
+## III. Long-Term and Broader Impact
+
+1.  **Continual Learning:**
+    *   **Challenge:** Allowing the robot to learn and adapt over its operational lifetime without complete retraining.
+    *   **Future Work:** Implement online learning or lifelong learning strategies for NLU, perception, or action models.
+2.  **Explainable AI (XAI):**
+    *   **Challenge:** Making AI decisions transparent and understandable to humans.
+    *   **Future Work:** Integrate XAI techniques to allow the VLA model to explain its reasoning for choosing a particular action or interpreting a command.
+3.  **Ethical Guidelines Integration:**
+    *   **Challenge:** Embedding ethical principles directly into the robot's decision-making process.
+    *   **Future Work:** Explore how to formalize ethical rules and integrate them into the planning and control systems, especially in scenarios involving human safety or privacy.
+4.  **Hardware Deployment:**
+    *   **Challenge:** Moving from simulation to a physical humanoid robot.
+    *   **Future Work:** Once the simulated system is robust, begin the challenging process of deploying and adapting the software to a real humanoid platform (e.g., Unitree H1, Agility Robotics Digit). This will involve addressing real-world sensor noise, actuator limitations, and communication latencies.
+
+By considering these areas for future work, your Capstone Project can become a foundation for continued exploration and innovation in the exciting and rapidly advancing field of Physical AI humanoids.

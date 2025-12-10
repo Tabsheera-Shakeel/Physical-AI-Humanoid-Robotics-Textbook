@@ -1,0 +1,281 @@
+---
+sidebar_position: 3
+sidebar_label: Basic Programming
+title: Basic ROS 2 Programming with Python and C++
+---
+
+# Basic ROS 2 Programming with Python and C++
+
+This section introduces you to the fundamentals of writing ROS 2 nodes using both Python and C++. We'll cover how to create a basic publisher and subscriber, demonstrating the core communication mechanism in ROS 2.
+
+## Creating a ROS 2 Package
+
+First, let's create a new ROS 2 package within your workspace (`~/ros2_ws/src`).
+
+```bash
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_cmake --dependencies rclcpp --license Apache-2.0 my_ros2_package_cpp
+ros2 pkg create --build-type ament_python --dependencies rclpy my_ros2_package_py
+```
+
+This creates two packages: one for C++ (`my_ros2_package_cpp`) and one for Python (`my_ros2_package_py`).
+
+## Python Publisher (Talker)
+
+### 1. Create the Publisher Node File
+
+Create a file named `my_ros2_package_py/my_ros2_package_py/publisher_member_function.py`:
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalPublisher(Node):
+
+    def __init__(self):
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello ROS 2: %d' % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_publisher = MinimalPublisher()
+    rclpy.spin(minimal_publisher)
+    minimal_publisher.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### 2. Update `setup.py`
+
+In `my_ros2_package_py/setup.py`, add the following inside `entry_points`:
+
+```python
+entry_points={
+    'console_scripts': [
+        'talker = my_ros2_package_py.publisher_member_function:main',
+    ],
+},
+```
+
+### 3. Build and Run
+
+```bash
+cd ~/ros2_ws
+colcon build --packages-select my_ros2_package_py
+source install/setup.bash
+ros2 run my_ros2_package_py talker
+```
+
+## Python Subscriber (Listener)
+
+### 1. Create the Subscriber Node File
+
+Create a file named `my_ros2_package_py/my_ros2_package_py/subscriber_member_function.py`:
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalSubscriber(Node):
+
+    def __init__(self):
+        super().__init__('minimal_subscriber')
+        self.subscription = self.create_subscription(
+            String,
+            'topic',
+            self.listener_callback,
+            10)
+        self.subscription  # prevent unused variable warning
+
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)
+
+def main(args=None):
+    rclpy.init(args=args)
+    minimal_subscriber = MinimalSubscriber()
+    rclpy.spin(minimal_subscriber)
+    minimal_subscriber.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### 2. Update `setup.py`
+
+In `my_ros2_package_py/setup.py`, add the following inside `entry_points` (alongside `talker`):
+
+```python
+entry_points={
+    'console_scripts': [
+        'talker = my_ros2_package_py.publisher_member_function:main',
+        'listener = my_ros2_package_py.subscriber_member_function:main',
+    ],
+},
+```
+
+### 3. Build and Run
+
+```bash
+cd ~/ros2_ws
+colcon build --packages-select my_ros2_package_py
+source install/setup.bash
+ros2 run my_ros2_package_py listener
+```
+
+Run the `talker` in one terminal and `listener` in another to see them communicate.
+
+## C++ Publisher (Talker)
+
+### 1. Create the Publisher Node File
+
+Create a file named `my_ros2_package_cpp/src/publisher_member_function.cpp`:
+
+```cpp
+#include <chrono>
+#include <functional>
+#include <memory>
+#include <string>
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+using namespace std::chrono_literals;
+
+class MinimalPublisher : public rclcpp::Node
+{
+public:
+  MinimalPublisher()
+  : Node("minimal_publisher"), count_(0)
+  {
+    publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+    timer_ = this->create_wall_timer(
+      500ms, std::bind(&MinimalPublisher::timer_callback, this));
+  }
+
+private:
+  void timer_callback()
+  {
+    auto message = std_msgs::msg::String();
+    message.data = "Hello ROS 2: " + std::to_string(count_++);
+    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+    publisher_->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  size_t count_;
+};
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::shutdown();
+  return 0;
+}
+```
+
+### 2. Update `CMakeLists.txt`
+
+In `my_ros2_package_cpp/CMakeLists.txt`, add the following:
+
+```cmake
+add_executable(talker src/publisher_member_function.cpp)
+ament_target_dependencies(talker rclcpp std_msgs)
+
+install(TARGETS
+  talker
+  DESTINATION lib/${PROJECT_NAME}
+)
+```
+
+### 3. Build and Run
+
+```bash
+cd ~/ros2_ws
+colcon build --packages-select my_ros2_package_cpp
+source install/setup.bash
+ros2 run my_ros2_package_cpp talker
+```
+
+## C++ Subscriber (Listener)
+
+### 1. Create the Subscriber Node File
+
+Create a file named `my_ros2_package_cpp/src/subscriber_member_function.cpp`:
+
+```cpp
+#include <functional>
+#include <memory>
+#include <string>
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+class MinimalSubscriber : public rclcpp::Node
+{
+public:
+  MinimalSubscriber()
+  : Node("minimal_subscriber")
+  {
+    subscription_ = this->create_subscription<std_msgs::msg::String>(
+      "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, std::placeholders::_1));
+  }
+
+private:
+  void topic_callback(const std_msgs::msg::String::SharedPtr msg) const
+  {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+  }
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+};
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MinimalSubscriber>());
+  rclcpp::shutdown();
+  return 0;
+}
+```
+
+### 2. Update `CMakeLists.txt`
+
+In `my_ros2_package_cpp/CMakeLists.txt`, add the following (alongside `talker`):
+
+```cmake
+add_executable(listener src/subscriber_member_function.cpp)
+ament_target_dependencies(listener rclcpp std_msgs)
+
+install(TARGETS
+  listener
+  DESTINATION lib/${PROJECT_NAME}
+)
+```
+
+### 3. Build and Run
+
+```bash
+cd ~/ros2_ws
+colcon build --packages-select my_ros2_package_cpp
+source install/setup.bash
+ros2 run my_ros2_package_cpp listener
+```
+
+Run the `talker` in one terminal and `listener` in another to see them communicate.
+
+This covers the basic programming principles for ROS 2 using both Python and C++. These foundational examples demonstrate how to create nodes, publish messages to topics, and subscribe to messages from topics, forming the core of any ROS 2 application.

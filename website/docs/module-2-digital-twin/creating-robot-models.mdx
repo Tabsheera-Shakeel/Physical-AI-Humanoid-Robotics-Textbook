@@ -1,0 +1,140 @@
+---
+sidebar_position: 2
+sidebar_label: Creating Robot Models
+title: Creating Robot Models for Simulation (URDF/Xacro to SDF)
+---
+
+# Creating Robot Models for Simulation (URDF/Xacro to SDF)
+
+To effectively simulate humanoid robots in platforms like Gazebo or Unity, an accurate and detailed 3D model of the robot is essential. While URDF (Unified Robot Description Format) and its extension Xacro are excellent for describing the robot's kinematic and dynamic properties, many simulators, especially Gazebo, use a more comprehensive format called SDF (Simulation Description Format).
+
+## Review of URDF/Xacro
+
+As discussed in Module 1, URDF defines the robot's links, joints, inertial properties, visual appearance, and collision geometry. Xacro extends URDF by adding macros, properties, and mathematical functions, making it easier to manage complex robot descriptions and reduce redundancy.
+
+For simulation purposes, a complete URDF/Xacro file should include:
+*   **Visual Elements:** To render the robot in the simulator.
+*   **Collision Elements:** To handle physical interactions with the environment and other objects.
+*   **Inertial Properties:** To ensure physically accurate behavior under gravity and forces.
+*   **Joint Limits and Dynamics:** To define the range of motion and motor properties.
+
+## Introduction to Simulation Description Format (SDF)
+
+SDF is an XML format for describing objects and environments for robot simulators, notably Gazebo. It is more general than URDF, capable of describing a wider range of objects (not just robots) and multiple robots within a single file. SDF also allows for features not directly supported by URDF, such as:
+
+*   **Nested Models:** Allowing models to contain other models, useful for complex assemblies.
+*   **Joint Friction and Damping:** More detailed physical properties for joints.
+*   **Plugins:** Extending simulator functionality (e.g., custom sensor models, controllers).
+*   **Light Sources:** Defining lighting in the simulation environment.
+
+## Converting URDF/Xacro to SDF
+
+Gazebo primarily uses SDF. While Gazebo can parse URDF files, it internally converts them to SDF. For more advanced features and better control, it's often beneficial to work directly with SDF or leverage tools that provide a robust conversion.
+
+### Using `urdf2sdf` for Conversion
+
+The `urdf2sdf` utility can convert a URDF file into an SDF file.
+
+1.  **Generate URDF from Xacro (if applicable):**
+    If your robot description is in Xacro format, first convert it to a URDF file:
+    ```bash
+    ros2 run xacro xacro my_robot.xacro > my_robot.urdf
+    ```
+
+2.  **Convert URDF to SDF:**
+    ```bash
+    gz sdf -p my_robot.urdf > my_robot.sdf
+    ```
+    This command will parse the `my_robot.urdf` file and output its SDF equivalent to `my_robot.sdf`.
+
+## Creating an SDF Model Package
+
+For better organization and reusability, robot models are typically stored in ROS 2 packages.
+
+1.  **Create a new package:**
+    ```bash
+    cd ~/ros2_ws/src
+    ros2 pkg create --build-type ament_cmake --dependencies gazebo_ros my_robot_description
+    ```
+
+2.  **Structure the package:**
+    Inside `my_robot_description`, you might have folders like:
+    *   `urdf/`: For Xacro and URDF files.
+    *   `meshes/`: For 3D visual and collision mesh files (`.stl`, `.dae`, `.obj`).
+    *   `launch/`: For Gazebo launch files.
+    *   `worlds/`: For custom Gazebo world files.
+
+3.  **Example `my_robot.xacro` (simplified humanoid part):**
+
+    ```xml
+    <?xml version="1.0"?>
+    <robot name="humanoid_leg" xmlns:xacro="http://ros.org/xacro">
+
+      <xacro:property name="thigh_length" value="0.4"/>
+      <xacro:property name="calf_length" value="0.4"/>
+      <xacro:property name="leg_diameter" value="0.1"/>
+
+      <link name="thigh_link">
+        <visual>
+          <geometry>
+            <cylinder radius="${leg_diameter/2}" length="${thigh_length}"/>
+          </geometry>
+          <origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
+        </visual>
+        <collision>
+          <geometry>
+            <cylinder radius="${leg_diameter/2}" length="${thigh_length}"/>
+          </geometry>
+          <origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+          <mass value="5"/>
+          <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.01"/>
+        </inertial>
+      </link>
+
+      <link name="calf_link">
+        <visual>
+          <geometry>
+            <cylinder radius="${leg_diameter/2}" length="${calf_length}"/>
+          </geometry>
+          <origin xyz="0 0 ${-calf_length/2}" rpy="0 0 0"/>
+        </visual>
+        <collision>
+          <geometry>
+            <cylinder radius="${leg_diameter/2}" length="${calf_length}"/>
+          </geometry>
+          <origin xyz="0 0 ${-calf_length/2}" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+          <mass value="3"/>
+          <inertia ixx="0.05" ixy="0" ixz="0" iyy="0.05" iyz="0" izz="0.005"/>
+        </inertial>
+      </link>
+
+      <joint name="knee_joint" type="revolute">
+        <parent link="thigh_link"/>
+        <child link="calf_link"/>
+        <origin xyz="0 0 ${-thigh_length}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-1.57" upper="0" effort="10" velocity="1"/>
+      </joint>
+
+    </robot>
+    ```
+    This Xacro defines a simplified two-link leg. More complex humanoids would involve many more links and joints.
+
+4.  **Launch the model in Gazebo:**
+    You would typically use a launch file to spawn your robot model in Gazebo.
+    ```xml
+    <launch>
+      <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
+        <arg name="world" value="empty.world"/>
+      </include>
+      <node pkg="gazebo_ros" exec="spawn_entity.py" name="spawn_robot" output="screen"
+            arguments="-entity my_robot -file $(find-pkg-share my_robot_description)/urdf/my_robot.urdf -x 0 -y 0 -z 1.0"/>
+    </launch>
+    ```
+    Note: For `spawn_entity.py`, you can usually directly pass a URDF. Gazebo will handle the internal conversion. For more advanced SDF features, you'd specify an SDF file.
+
+Creating accurate and well-defined robot models is a foundational step for effective simulation. By leveraging URDF, Xacro, and SDF, you can build virtual representations that faithfully mimic your physical humanoid robots.
