@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Book Updates and Table of Contents","permalink":"/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info","unlisted":false,"date":"2025-12-08T00:00:00.000Z"}]}')}}]);

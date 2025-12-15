@@ -8,26 +8,87 @@
     <subtitle>Physical AI and Humanoid Robotics Blog</subtitle>
     <icon>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Book and Developer Information]]></title>
+        <title type="html"><![CDATA[Book Updates and Table of Contents]]></title>
         <id>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info</id>
         <link href="https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info"/>
         <updated>2025-12-08T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[About the Book: Physical AI and Humanoid Robotics]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="about-the-book-physical-ai-and-humanoid-robotics">About the Book: Physical AI and Humanoid Robotics<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#about-the-book-physical-ai-and-humanoid-robotics" class="hash-link" aria-label="Direct link to About the Book: Physical AI and Humanoid Robotics" title="Direct link to About the Book: Physical AI and Humanoid Robotics" translate="no">​</a></h2>
-<p>This textbook serves as a comprehensive guide to the fascinating and rapidly evolving fields of Physical AI and Humanoid Robotics. Designed for students, researchers, and enthusiasts, it delves into the core concepts, practical applications, and future potential of intelligent robots that interact with the physical world.</p>
-<p>Key topics covered include:</p>
+        <summary type="html"><![CDATA[Book Updates and Complete Table of Contents]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="book-updates-and-complete-table-of-contents">Book Updates and Complete Table of Contents<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#book-updates-and-complete-table-of-contents" class="hash-link" aria-label="Direct link to Book Updates and Complete Table of Contents" title="Direct link to Book Updates and Complete Table of Contents" translate="no">​</a></h2>
+<p>We're excited to share the latest updates and improvements to our comprehensive guide on Physical AI and humanoid robotics. This book continues to evolve with new content, examples, and insights into the rapidly advancing field of robotics.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="recent-additions">Recent Additions<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#recent-additions" class="hash-link" aria-label="Direct link to Recent Additions" title="Direct link to Recent Additions" translate="no">​</a></h3>
 <ul>
-<li class="">ROS2 for robotic control and communication</li>
-<li class="">Digital Twin concepts and simulation with Gazebo and Unity</li>
-<li class="">AI for robot brains, leveraging Isaac SDK</li>
-<li class="">Visual Language Models (VLAs) for advanced robot perception and action generation</li>
+<li class="">Enhanced coverage of Vision-Language-Action systems</li>
+<li class="">Updated examples for the latest ROS 2 distributions</li>
+<li class="">New case studies on humanoid robot implementations</li>
+<li class="">Expanded appendices with additional resources</li>
 </ul>
-<p>Our goal is to provide a solid foundation and inspire further exploration into creating the next generation of intelligent, autonomous, and physically capable robots.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="code-examples-and-hands-on-learning">Code Examples and Hands-on Learning<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#code-examples-and-hands-on-learning" class="hash-link" aria-label="Direct link to Code Examples and Hands-on Learning" title="Direct link to Code Examples and Hands-on Learning" translate="no">​</a></h2>
-<p>To support your hands-on learning and practical application of the concepts discussed in this book, we provide a dedicated GitHub repository with code examples. This repository is an invaluable resource for experimenting with ROS2, digital twin simulations, AI for robot brains, and Visual Language Models.</p>
-<p>You can access the code examples here: <a href="https://github.com/Tabsheera-Shakeel/Physical-AI-Humanoid-Robotics-Code-Examples.git" target="_blank" rel="noopener noreferrer" class="">Physical AI Humanoid Robotics Code Examples</a></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="about-the-developer">About the Developer<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#about-the-developer" class="hash-link" aria-label="Direct link to About the Developer" title="Direct link to About the Developer" translate="no">​</a></h2>
-<p>This project is spearheaded by Tabsheera Shakeel. You can find more detailed information about the developer, including professional background and contact details, on the dedicated <a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/developer">Developer page</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="complete-table-of-contents">Complete Table of Contents<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#complete-table-of-contents" class="hash-link" aria-label="Direct link to Complete Table of Contents" title="Direct link to Complete Table of Contents" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="core-modules">Core Modules<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#core-modules" class="hash-link" aria-label="Direct link to Core Modules" title="Direct link to Core Modules" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/introduction/what-is-physical-ai">Introduction to Physical AI &amp; Humanoid Robotics</a></strong></p>
+<ul>
+<li class="">Understanding the scope and applications</li>
+<li class="">Overview of key concepts and technologies</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/module-1-ros2">Module 1: ROS 2 Fundamentals</a></strong></p>
+<ul>
+<li class="">Robot Operating System 2 basics</li>
+<li class="">Node communication and message passing</li>
+<li class="">Package management and launch files</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/module-2-digital-twin">Module 2: Digital Twin Simulation</a></strong></p>
+<ul>
+<li class="">Gazebo and Unity simulation environments</li>
+<li class="">Robot modeling and physics simulation</li>
+<li class="">Sensor integration and testing</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/module-3-ai-robot-brain">Module 3: AI-Robot Brain (NVIDIA Isaac)</a></strong></p>
+<ul>
+<li class="">Perception and computer vision</li>
+<li class="">Navigation and path planning</li>
+<li class="">AI-driven decision making</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/module-4-vla">Module 4: Vision-Language-Action (VLA)</a></strong></p>
+<ul>
+<li class="">Integrating perception and language</li>
+<li class="">Action execution and control</li>
+<li class="">Human-robot interaction</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/capstone-project/project-overview">Capstone Project</a></strong></p>
+<ul>
+<li class="">Building a complete humanoid AI system</li>
+<li class="">Integration of all learned concepts</li>
+<li class="">Testing and validation procedures</li>
+</ul>
+</li>
+<li class="">
+<p><strong><a class="" href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/appendices/ros2-cheatsheet">Appendices</a></strong></p>
+<ul>
+<li class="">ROS 2 cheat sheets</li>
+<li class="">Isaac API references</li>
+<li class="">Troubleshooting guides</li>
+<li class="">Glossary of terms</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="coming-soon">Coming Soon<a href="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/book-and-developer-info#coming-soon" class="hash-link" aria-label="Direct link to Coming Soon" title="Direct link to Coming Soon" translate="no">​</a></h2>
+<ul>
+<li class="">Advanced control algorithms</li>
+<li class="">Multi-robot coordination</li>
+<li class="">Ethical considerations in humanoid robotics</li>
+<li class="">Industrial applications and case studies</li>
+</ul>
 <p>Stay tuned for more updates, new content, and exciting developments in the world of Physical AI and Humanoid Robotics!</p>]]></content>
         <author>
             <name>Tabsheera Shakeel</name>
@@ -35,105 +96,6 @@
         </author>
         <category label="Update" term="Update"/>
         <category label="Book" term="Book"/>
-        <category label="Developer" term="Developer"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Welcome]]></title>
-        <id>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/welcome</id>
-        <link href="https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/welcome"/>
-        <updated>2021-08-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
-        <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer" class="">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer" class="">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
-<ul>
-<li class=""><code>2019-05-30-welcome.md</code></li>
-<li class=""><code>2019-05-30-welcome/index.md</code></li>
-</ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://tabsheera-shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
-        <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
-        </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Facebook" term="Facebook"/>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MDX Blog Post]]></title>
-        <id>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/mdx-blog-post</id>
-        <link href="https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/mdx-blog-post"/>
-        <updated>2021-08-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
-        <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer" class="">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer" class="">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
-<!-- -->
-<p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
-<button>Click me!</button>]]></content>
-        <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
-        </author>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Long Blog Post]]></title>
-        <id>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/long-blog-post</id>
-        <link href="https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/long-blog-post"/>
-        <updated>2019-05-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is the summary of a very long blog post,]]></summary>
-        <content type="html"><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[First Blog Post]]></title>
-        <id>https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/first-blog-post</id>
-        <link href="https://Tabsheera-Shakeel.github.io/Physical-AI-Humanoid-Robotics-Textbook/blog/first-blog-post"/>
-        <updated>2019-05-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet...]]></summary>
-        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
-<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
-        </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Hola" term="Hola"/>
-        <category label="Docusaurus" term="Docusaurus"/>
+        <category label="Table of Contents" term="Table of Contents"/>
     </entry>
 </feed>
