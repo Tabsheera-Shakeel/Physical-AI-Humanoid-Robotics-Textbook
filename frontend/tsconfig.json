@@ -1,0 +1,39 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@site/*": [
+        "./*"
+      ],
+      "@theme/*": [
+        "./src/theme/*"
+      ],
+      "@generated/*": [
+        "./.docusaurus/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noEmit": true,
+    "types": [
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/types",
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "docs/**/*.mdx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}
